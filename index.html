@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユニアリ大会受付</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1 id="title">ユニアリ大会受付</h1>
+
+<label>受付番号</label>
+<input id="receptionNumber" placeholder="トナメルの番号">
+
+<label>チーム名</label>
+<input id="teamName" placeholder="チーム名">
+
+<label>チーム名（ひらがな）</label>
+<input id="teamName2" placeholder="ちーむめい">
+
+<hr>
+<div class="player">
+<h2>プレイヤー1</h2>
+
+<label >プレイヤー名</label>
+<input id="playername1" placeholder="プレイヤー名">
+
+<label>タイトル</label>
+<input id="decktitle1" placeholder="検索" list="titleList">
+
+<label>色</label>
+<select id="deckcolor1">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
+
+<hr>
+<div class="player">
+<h2>プレイヤー2</h2>
+
+<label>プレイヤー名</label>
+<input id="playername2" placeholder="プレイヤー名">
+
+<label>タイトル</label>
+<input id="decktitle2" placeholder="検索" list="titleList">
+
+<label>色</label>
+<select id="deckcolor2">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
+
+<hr>
+<div class="player">
+<h2>プレイヤー3</h2>
+
+<label>プレイヤー名</label>
+<input id="playername3" placeholder="プレイヤー名">
+
+<label>タイトル</label>
+<input id="decktitle3" placeholder="検索" list="titleList">
+
+<label>色</label>
+<select id="deckcolor3">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
+
+<hr>
+
+<button id="submitButton">送信</button>
+
+<datalist id="titleList"></datalist>
+
+<script src="script.js"></script>
+
+</body>
+</html
