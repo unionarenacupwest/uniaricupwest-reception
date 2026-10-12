@@ -14,11 +14,11 @@ padding: 16px;
 
 @media (max-width: 600px) {
 body {
-width: 100%;
-max-width: none;
-padding: 8px;
-margin: 12px;
-font-size: 20px;
+    width: auto;
+    max-width: none;
+    padding: 8px;
+    margin: 12px;
+    font-size: 20px;
 }
 
 h1 {
