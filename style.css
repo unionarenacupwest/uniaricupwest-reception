@@ -4,17 +4,20 @@ body{
 label{
     display:block;
 }
-input{
-    width:90%;
-    padding:10px;
+input {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
 }
 .player{
     margin-bottom:30px;
 }
-button{
+button {
     display: block;
-    width: 90%;
-    font-size:18px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 18px;
     padding: 15px;
     margin: auto;
 }
@@ -56,4 +59,23 @@ button{
     box-sizing: border-box;
     font-size: 16px;
     padding: 12px;
+}
+/* ページ全体の基本設定 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* スマホでは画面幅に合わせる */
+@media (max-width: 600px) {
+    body {
+        width: 100%;
+        padding: 16px;
+    }
 }
