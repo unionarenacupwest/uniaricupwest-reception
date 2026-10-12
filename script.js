@@ -91,15 +91,62 @@ button.addEventListener("click", function () {
 })
 const titleList = document.getElementById("titleList");
 
+const titleInputs = [
+    { input: "decktitle1", options: "titleOptions1" },
+    { input: "decktitle2", options: "titleOptions2" },
+    { input: "decktitle3", options: "titleOptions3" }
+];
+
+let allTitles = [];
+
 fetch("https://script.google.com/macros/s/AKfycbyffCvCL-alAeOlagaUp3PPPOzxaEmQAkg6yNTaQzt3c5iowYVnNFn6RGXj-zVr-ulo/exec")
     .then(response => response.json())
     .then(titles => {
-        titles.forEach(title => {
-            const option = document.createElement("option");
-            option.value = title;
-            titleList.appendChild(option);
-        });
+        allTitles = titles;
     })
     .catch(error => {
         console.error("タイトル取得エラー:", error);
     });
+
+titleInputs.forEach(item => {
+    const input = document.getElementById(item.input);
+    const options = document.getElementById(item.options);
+
+    function showOptions() {
+        const keyword = input.value.trim().toLowerCase();
+
+        const filteredTitles = allTitles.filter(title =>
+            title.toLowerCase().includes(keyword)
+        );
+
+        options.innerHTML = "";
+
+        filteredTitles.forEach(title => {
+            const option = document.createElement("button");
+            option.type = "button";
+            option.textContent = title;
+            option.className = "title-option";
+
+            option.addEventListener("pointerdown", event => {
+                event.preventDefault();
+                input.value = title;
+                options.style.display = "none";
+            });
+
+            options.appendChild(option);
+        });
+
+        options.style.display =
+            filteredTitles.length > 0 ? "block" : "none";
+    }
+
+    input.addEventListener("focus", showOptions);
+    input.addEventListener("input", showOptions);
+
+    document.addEventListener("click", event => {
+        if (!input.contains(event.target) &&
+            !options.contains(event.target)) {
+            options.style.display = "none";
+        }
+    });
+});
