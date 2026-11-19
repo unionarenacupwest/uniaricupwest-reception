@@ -1,158 +1,120 @@
-document.getElementById("title").textContent = "関西ユニアリカップ 受付";
+<!DOCTYPE html>
+<html lang="ja">
+<head> <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>関西ユニアリカップ大会受付</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-const button = document.getElementById("submitButton");
+<h1 id="title">関西ユニアリカップ大会受付</h1>
 
-button.addEventListener("click", function () {
+<label>受付番号</label>
+<input id="receptionNumber" placeholder="トナメルの番号">
 
-    const receptionNumber = document.getElementById("receptionNumber").value;
-    if (receptionNumber === "") {
-    alert("受付番号を入力してください");
-    return;}
-    const teamName = document.getElementById("teamName").value;
-    if (teamName === "") {
-    alert("チーム名を入力してください");
-    return;}
-    const teamName2 = document.getElementById("teamName2").value;
+<label>チーム名</label>
+<input id="teamName" placeholder="チーム名">
 
-    const playername1 = document.getElementById("playername1").value;
-    if (playername1 === "") {
-    alert("プレイヤー1の名前を入力してください");
-    return;}
-    const decktitle1 = document.getElementById("decktitle1").value;
-    if (decktitle1 === "") {
-    alert("プレイヤー1の使用タイトルを選択してください");
-    return;}
-    const deckcolor1 = document.getElementById("deckcolor1").value;
-    if (deckcolor1 === "色を選択") {
-    alert("プレイヤー1の色を入力してください");
-    return;}
+<label>チーム名（ひらがな）</label>
+<input id="teamName2" placeholder="ちーむめい">
 
-    const playername2 = document.getElementById("playername2").value;
-    if (playername2 === "") {
-    alert("プレイヤー2の名前を入力してください");
-    return;}
-    const decktitle2 = document.getElementById("decktitle2").value;
-    if (decktitle2 === "") {
-    alert("プレイヤー2の使用タイトルを選択してください");
-    return;}
-    const deckcolor2 = document.getElementById("deckcolor2").value;
-    if (deckcolor2 === "色を選択") {
-    alert("プレイヤー2の色を入力してください");
-    return;}
+<hr>
+<div class="player">
+<h2>プレイヤー1</h2>
 
-    const playername3 = document.getElementById("playername3").value;
-    if (playername3 === "") {
-    alert("プレイヤー3の名前を入力してください");
-    return;}
-    const decktitle3 = document.getElementById("decktitle3").value;
-    if (decktitle3 === "") {
-    alert("プレイヤー3の使用タイトルを選択してください");
-    return;}
-    const deckcolor3 = document.getElementById("deckcolor3").value;
-    if (deckcolor3 === "色を選択") {
-    alert("プレイヤー3の色を入力してください");
-    return;}
+<label >プレイヤー名</label>
+<input id="playername1" placeholder="プレイヤー名">
 
-    const team = {
-        receptionNumber: receptionNumber,
-        teamName: teamName,
-        teamName2: teamName2,
-        playername1: playername1,
-        decktitle1: decktitle1,
-        deckcolor1: deckcolor1,
-        playername2: playername2,
-        decktitle2: decktitle2,
-        deckcolor2: deckcolor2,
-        playername3: playername3,
-        decktitle3: decktitle3,
-        deckcolor3: deckcolor3
-    };
+<label>タイトル</label>
+<div class="title-input-wrap">
+    <input
+        id="decktitle1"
+        class="title-search"
+        placeholder="タップしてタイトルを検索"
+        autocomplete="off"
+    >
+    <button type="button" id="titleToggle1" class="title-toggle">▼</button>
+</div>
+<div id="titleOptions1" class="title-options"></div>
 
-    fetch("https://script.google.com/macros/s/AKfycbyffCvCL-alAeOlagaUp3PPPOzxaEmQAkg6yNTaQzt3c5iowYVnNFn6RGXj-zVr-ulo/exec", {
-        method: "POST",
-        body: JSON.stringify(team)
-    });
+<label>色</label>
+<select id="deckcolor1">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
 
-    document.getElementById("receptionNumber").value = "";
-    document.getElementById("teamName").value = "";
-    document.getElementById("teamName2").value = "";
-    document.getElementById("playername1").value = "";
-    document.getElementById("decktitle1").value = "";
-    document.getElementById("deckcolor1").value = "色を選択";
-    document.getElementById("playername2").value = "";
-    document.getElementById("decktitle2").value = "";
-    document.getElementById("deckcolor2").value = "色を選択";
-    document.getElementById("playername3").value = "";
-    document.getElementById("decktitle3").value = "";
-    document.getElementById("deckcolor3").value = "色を選択";
+<hr>
+<div class="player">
+<h2>プレイヤー2</h2>
 
-    alert("送信完了");
+<label>プレイヤー名</label>
+<input id="playername2" placeholder="プレイヤー名">
 
-})
-const titleList = document.getElementById("titleList");
+<label>タイトル</label>
+<div class="title-input-wrap">
+    <input
+        id="decktitle2"
+        class="title-search"
+        placeholder="タップしてタイトルを検索"
+        autocomplete="off"
+    >
+    <button type="button" id="titleToggle2" class="title-toggle">▼</button>
+</div>
+<div id="titleOptions2" class="title-options"></div>
 
-const titleInputs = [
-    { input: "decktitle1", options: "titleOptions1", toggle: "titleToggle1" },
-    { input: "decktitle2", options: "titleOptions2", toggle: "titleToggle2" },
-    { input: "decktitle3", options: "titleOptions3", toggle: "titleToggle3" }
-];
+<label>色</label>
+<select id="deckcolor2">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
 
-let allTitles = [];
+<hr>
+<div class="player">
+<h2>プレイヤー3</h2>
 
-fetch("https://script.google.com/macros/s/AKfycbyffCvCL-alAeOlagaUp3PPPOzxaEmQAkg6yNTaQzt3c5iowYVnNFn6RGXj-zVr-ulo/exec")
-    .then(response => response.json())
-    .then(titles => {
-        allTitles = titles;
-    })
-    .catch(error => {
-        console.error("タイトル取得エラー:", error);
-    });
+<label>プレイヤー名</label>
+<input id="playername3" placeholder="プレイヤー名">
 
-titleInputs.forEach(item => {
-    const input = document.getElementById(item.input);
-    const options = document.getElementById(item.options);
+<label>タイトル</label>
+<div class="title-input-wrap">
+    <input
+        id="decktitle3"
+        class="title-search"
+        placeholder="タップしてタイトルを検索"
+        autocomplete="off"
+    >
+    <button type="button" id="titleToggle3" class="title-toggle">▼</button>
+</div>
+<div id="titleOptions3" class="title-options"></div>
 
-    function showOptions(showAll = false) {
-        const keyword = showAll ? "" : input.value.trim().toLowerCase();
+<label>色</label>
+<select id="deckcolor3">
+    <option>色を選択</option>
+    <option>赤</option>
+    <option>青</option>
+    <option>黄</option>
+    <option>緑</option>
+    <option>紫</option>
+</select>
+</div>
 
-        const filteredTitles = allTitles.filter(title =>
-            title.toLowerCase().includes(keyword)
-        );
+<hr>
 
-        options.innerHTML = "";
+<button id="submitButton">送信</button>
 
-        filteredTitles.forEach(title => {
-            const option = document.createElement("button");
-            option.type = "button";
-            option.textContent = title;
-            option.className = "title-option";
+<datalist id="titleList"></datalist>
 
-            option.addEventListener("click", () => {
-    input.value = title;
-    options.style.display = "none";
-});
+<script src="script.js"></script>
 
-            options.appendChild(option);
-        });
-
-        options.style.display =
-            filteredTitles.length > 0 ? "block" : "none";
-    }
-
-    input.addEventListener("focus", showOptions);
-    input.addEventListener("input", showOptions);
-
-    const toggle = document.getElementById(item.toggle);
-
-toggle.addEventListener("click", () => {
-    showOptions(true);
-});
-
-    document.addEventListener("click", event => {
-        if (!input.contains(event.target) &&
-    !options.contains(event.target) &&
-    !toggle.contains(event.target)) {
-            options.style.display = "none";
-        }
-    });
-});
+</body>
+</html
