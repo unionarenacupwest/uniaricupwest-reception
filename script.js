@@ -127,11 +127,10 @@ titleInputs.forEach(item => {
             option.textContent = title;
             option.className = "title-option";
 
-            option.addEventListener("pointerdown", event => {
-                event.preventDefault();
-                input.value = title;
-                options.style.display = "none";
-            });
+            option.addEventListener("click", () => {
+    input.value = title;
+    options.style.display = "none";
+});
 
             options.appendChild(option);
         });
