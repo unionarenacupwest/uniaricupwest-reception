@@ -145,8 +145,8 @@ titleInputs.forEach(item => {
     input.addEventListener("focus", () => showOptions());
     input.addEventListener("input", () => showOptions());
 
-    toggle.addEventListener("click", event => {
-        event.stopPropagation();
+    toggle.addEventListener("pointerdown", event => {
+        event.preventDefault();
         showOptions(true);
     });
 
