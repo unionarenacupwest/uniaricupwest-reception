@@ -92,9 +92,9 @@ button.addEventListener("click", function () {
 const titleList = document.getElementById("titleList");
 
 const titleInputs = [
-    { input: "decktitle1", options: "titleOptions1" },
-    { input: "decktitle2", options: "titleOptions2" },
-    { input: "decktitle3", options: "titleOptions3" }
+    { input: "decktitle1", options: "titleOptions1", toggle: "titleToggle1" },
+    { input: "decktitle2", options: "titleOptions2", toggle: "titleToggle2" },
+    { input: "decktitle3", options: "titleOptions3", toggle: "titleToggle3" }
 ];
 
 let allTitles = [];
@@ -112,8 +112,8 @@ titleInputs.forEach(item => {
     const input = document.getElementById(item.input);
     const options = document.getElementById(item.options);
 
-    function showOptions() {
-        const keyword = input.value.trim().toLowerCase();
+    function showOptions(showAll = false) {
+        const keyword = showAll ? "" : input.value.trim().toLowerCase();
 
         const filteredTitles = allTitles.filter(title =>
             title.toLowerCase().includes(keyword)
@@ -143,9 +143,16 @@ titleInputs.forEach(item => {
     input.addEventListener("focus", showOptions);
     input.addEventListener("input", showOptions);
 
+    const toggle = document.getElementById(item.toggle);
+
+toggle.addEventListener("click", () => {
+    showOptions(true);
+});
+
     document.addEventListener("click", event => {
         if (!input.contains(event.target) &&
-            !options.contains(event.target)) {
+    !options.contains(event.target) &&
+    !toggle.contains(event.target)) {
             options.style.display = "none";
         }
     });
